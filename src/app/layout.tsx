@@ -1,11 +1,29 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 
+import preview from "./../assets/preview.png";
+
 const inter = Inter({ subsets: ["latin"] });
 
+const title = "Guarda la K";
+const description = "🎲🎲🎲🎲🎲";
+
 export const metadata = {
-  title: "Guarda la K",
-  description: "¿Que probabilidad tienes de ganar a los dados si vuelves a tirar?",
+  title,
+  description,
+  openGraph: {
+    url: "https://guardalak.oscarinadev.com/",
+    type: "website",
+    title,
+    description,
+    images: preview.src,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: preview.src,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
