@@ -44,7 +44,7 @@ export default function Home() {
       <h1 className="mb-8 text-center text-5xl font-bold md:text-7xl">Guarda la K</h1>
       <div className="z-10 flex h-16 w-full max-w-5xl items-center justify-between text-sm sm:h-20 md:h-28">
         <div className="flex w-full flex-col">
-          <label className="my-2 text-xl">
+          <label className="my-3 md:my-2 text-xl">
             <span className="font-bold ">Jugadores: </span>
             {players}
           </label>
