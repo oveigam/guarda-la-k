@@ -79,12 +79,17 @@ export default function Home() {
           );
         })}
       </div>
-      <h2
-        className={`mt-24 w-full text-center text-7xl md:text-8xl ${getWinClassColor(dataValue)}`}
-        title={String(dataValue)}
-      >
-        {winPercentage}%
-      </h2>
+      <div className="relative">
+        <h2
+          className={`mt-24 w-full text-center text-7xl md:text-8xl ${getWinClassColor(dataValue)}`}
+          title={String(dataValue)}
+        >
+          {winPercentage}%
+        </h2>
+        <div className="flex w-full items-center justify-center p-4">
+          <p className="rounded-full bg-slate-200 px-4 text-center">{dataValue}</p>
+        </div>
+      </div>
     </main>
   );
 }
