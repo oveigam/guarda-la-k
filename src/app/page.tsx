@@ -32,7 +32,7 @@ export default function Home() {
     DiceFace.BLACK,
     DiceFace.KING,
   ]);
-  const [players, setPlayers] = useState(MIN_PLAYERS);
+  const [players, setPlayers] = useState(5);
 
   const dataKey = `${[...hand].sort().join("-")}/${players}`;
   const dataValue = data[dataKey] ?? 0;
