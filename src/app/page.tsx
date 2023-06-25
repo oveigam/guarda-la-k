@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8 p-4 font-mono md:p-24 ">
-      <h1 className="mb-8 text-center text-6xl font-bold md:text-7xl">Guarda la K</h1>
+      <h1 className="mb-8 text-center text-5xl font-bold md:text-7xl">Guarda la K</h1>
       <div className="z-10 flex h-16 w-full max-w-5xl items-center justify-between text-sm sm:h-20 md:h-28">
         <div className="flex w-full flex-col">
           <label className="my-2 text-xl">
@@ -80,7 +80,7 @@ export default function Home() {
         })}
       </div>
       <h2
-        className={`mt-24 w-full text-center text-8xl ${getWinClassColor(dataValue)}`}
+        className={`mt-24 w-full text-center text-7xl md:text-8xl ${getWinClassColor(dataValue)}`}
         title={String(dataValue)}
       >
         {winPercentage}%
