@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import { FC } from "react";
-
-import { Black } from "./shapes/Black";
-import { Red } from "./shapes/Red";
-import { Letter } from "./shapes/Letter";
-import { Ace } from "./shapes/Ace";
 import clsx from "clsx";
+import { FC } from "react";
+import { Ace } from "./shapes/Ace";
+import { Black } from "./shapes/Black";
+import { Letter } from "./shapes/Letter";
+import { Red } from "./shapes/Red";
 
 export enum DiceFace {
   BLACK = 0,
