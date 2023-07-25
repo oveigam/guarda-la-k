@@ -1,11 +1,12 @@
 "use client";
 
-import { Dice, DiceFace } from "@/components/Dice";
+import { DiceFace } from "@/components/Dice";
 import { Slider } from "@/components/Slider";
 import { ServerRuntime } from "next";
 import { useState } from "react";
 
 import _data from "./../data.json";
+import { DiceSelector } from "@/components/DiceSelector";
 
 const data = _data as Record<string, number>;
 
@@ -40,11 +41,11 @@ export default function Home() {
   const winPercentage = (dataValue * 100).toFixed(2);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-8 p-4 font-mono md:p-24 ">
-      <h1 className="mb-8 text-center text-5xl font-bold md:text-7xl">Guarda la K</h1>
-      <div className="z-10 flex h-16 w-full max-w-5xl items-center justify-between text-sm sm:h-20 md:h-28">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-4 p-4 font-mono">
+      <h1 className="text-center text-5xl font-bold md:text-7xl">Guarda la K</h1>
+      <div className="z-10 mb-8 flex h-16 w-full max-w-5xl items-center justify-between text-sm sm:h-20 md:h-28">
         <div className="flex w-full flex-col">
-          <label className="my-3 md:my-2 text-xl">
+          <label className="my-3 text-xl md:my-2">
             <span className="font-bold ">Jugadores: </span>
             {players}
           </label>
@@ -62,26 +63,24 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="z-10 flex h-16 w-full max-w-5xl items-center justify-between text-sm sm:h-20 md:h-28">
-        {hand.map((face, i) => {
-          return (
-            <Dice
-              key={i}
-              face={face}
-              onChange={(face) => {
-                setHand((prev) => {
-                  const result = [...prev];
-                  result[i] = face;
-                  return result;
-                });
-              }}
-            />
-          );
-        })}
-      </div>
+      {hand.map((face, i) => {
+        return (
+          <DiceSelector
+            key={i}
+            value={face}
+            onChange={(face) => {
+              setHand((prev) => {
+                const result = [...prev];
+                result[i] = face;
+                return result;
+              });
+            }}
+          />
+        );
+      })}
       <div className="relative">
         <h2
-          className={`mt-24 w-full text-center text-7xl md:text-8xl ${getWinClassColor(dataValue)}`}
+          className={`mt-8 w-full text-center text-7xl md:text-8xl ${getWinClassColor(dataValue)}`}
           title={String(dataValue)}
         >
           {winPercentage}%

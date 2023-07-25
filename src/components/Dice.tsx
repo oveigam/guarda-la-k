@@ -3,12 +3,11 @@
 import Image from "next/image";
 import { FC } from "react";
 
-import black from "./../assets/black.png";
-import red from "./../assets/red.png";
-import jack from "./../assets/j.png";
-import queen from "./../assets/q.png";
-import king from "./../assets/k.png";
-import ace from "./../assets/ace.png";
+import { Black } from "./shapes/Black";
+import { Red } from "./shapes/Red";
+import { Letter } from "./shapes/Letter";
+import { Ace } from "./shapes/Ace";
+import clsx from "clsx";
 
 export enum DiceFace {
   BLACK = 0,
@@ -19,58 +18,39 @@ export enum DiceFace {
   ACE = 5,
 }
 
-const getImage = (face: DiceFace) => {
+const getShape = (face: DiceFace) => {
   switch (face) {
     case DiceFace.BLACK:
-      return black;
+      return <Black />;
     case DiceFace.RED:
-      return red;
+      return <Red />;
     case DiceFace.JACK:
-      return jack;
+      return <Letter letter="J" />;
     case DiceFace.QUEEN:
-      return queen;
+      return <Letter letter="Q" />;
     case DiceFace.KING:
-      return king;
+      return <Letter letter="K" />;
     case DiceFace.ACE:
-      return ace;
+      return <Ace />;
   }
 };
 
 type Props = {
   face: DiceFace;
-  onChange: (face: DiceFace) => void;
+  selected: boolean;
+  onClick: () => void;
 };
 
-export const Dice: FC<Props> = ({ face, onChange }) => {
+export const Dice: FC<Props> = ({ face, selected, onClick }) => {
   return (
-    <div className="relative aspect-square h-full">
-      <Image
-        src={getImage(face)}
-        alt="dice image"
-        fill
-        onClick={() => {
-          switch (face) {
-            case DiceFace.BLACK:
-              onChange(DiceFace.RED);
-              break;
-            case DiceFace.RED:
-              onChange(DiceFace.JACK);
-              break;
-            case DiceFace.JACK:
-              onChange(DiceFace.QUEEN);
-              break;
-            case DiceFace.QUEEN:
-              onChange(DiceFace.KING);
-              break;
-            case DiceFace.KING:
-              onChange(DiceFace.ACE);
-              break;
-            case DiceFace.ACE:
-              onChange(DiceFace.BLACK);
-              break;
-          }
-        }}
-      />
+    <div
+      className={clsx("h-12 w-12 rounded-md border  bg-white p-1.5", {
+        "cursor-pointer border-slate-500 opacity-30": !selected,
+        "scale-110 border-black": selected,
+      })}
+      onClick={onClick}
+    >
+      {getShape(face)}
     </div>
   );
 };
