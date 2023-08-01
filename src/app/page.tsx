@@ -90,7 +90,9 @@ export default function Home() {
           {winPercentage}%
         </h2>
         <div className="flex w-full items-center justify-center p-4">
-          <p className="rounded-full bg-slate-200 px-4 text-center">{dataValue}</p>
+          <p className="rounded-full bg-slate-200 px-4 text-center dark:bg-slate-700">
+            {dataValue}
+          </p>
         </div>
       </div>
     </main>
