@@ -2,15 +2,17 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 
 import preview from "./../assets/preview.png";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const title = "Guarda la K";
 const description = "🎲🎲🎲🎲🎲";
 
-export const metadata = {
+export const metadata: Metadata = {
   title,
   description,
+  metadataBase: new URL("https://guardalak.oscarinadev.com/"),
   openGraph: {
     url: "https://guardalak.oscarinadev.com/",
     type: "website",
