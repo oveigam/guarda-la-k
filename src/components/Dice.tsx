@@ -42,7 +42,7 @@ type Props = {
 export const Dice: FC<Props> = ({ face, selected, onClick }) => {
   return (
     <div
-      className={clsx("h-12 w-12 rounded-md border  bg-white p-1.5", {
+      className={clsx("h-12 w-12 rounded-md border bg-white p-1.5", {
         "cursor-pointer border-slate-500 opacity-30": !selected,
         "scale-110 border-black": selected,
       })}

@@ -3,7 +3,7 @@
 import { DiceFace } from "@/components/Dice";
 import { Slider } from "@/components/Slider";
 import { ServerRuntime } from "next";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 import _data from "./../data.json";
 import { DiceSelector } from "@/components/DiceSelector";
@@ -63,21 +63,25 @@ export default function Home() {
           />
         </div>
       </div>
-      {hand.map((face, i) => {
-        return (
-          <DiceSelector
-            key={i}
-            value={face}
-            onChange={(face) => {
-              setHand((prev) => {
-                const result = [...prev];
-                result[i] = face;
-                return result;
-              });
-            }}
-          />
-        );
-      })}
+      <div className="flex flex-col items-center justify-center gap-2">
+        {hand.map((face, i) => {
+          return (
+            <Fragment key={i}>
+              <DiceSelector
+                value={face}
+                onChange={(face) => {
+                  setHand((prev) => {
+                    const result = [...prev];
+                    result[i] = face;
+                    return result;
+                  });
+                }}
+              />
+              {i !== hand.length - 1 && <div className="h-[1px] w-5/6 bg-slate-500" />}
+            </Fragment>
+          );
+        })}
+      </div>
       <div className="relative">
         <h2
           className={`mt-8 w-full text-center text-7xl md:text-8xl ${getWinClassColor(dataValue)}`}
